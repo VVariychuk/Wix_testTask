@@ -19,7 +19,9 @@ const deboucedSearch = _.debounce(onSearchInput, 1000);
 
 refs.serchInput.addEventListener('input', deboucedSearch);
 
-refs.gallery.innerHTML = '<h2>Tipe your seach query please</h2>';
+function noQuery() { return '<h2>Tipe your search query please</h2>'}
+
+refs.gallery.innerHTML = noQuery();
 
 function  getBySearchQuery(searchQuery) {    
     const url = `${MAIN_URL}search/movie?api_key=${KEY}&language=en-US&query=${searchQuery}`;
@@ -33,7 +35,7 @@ function onSearchInput(e) {
     searchQuery = e.target.value;    
 
     if (searchQuery === '' || searchQuery.length < 3) {
-        refs.gallery.innerHTML = '<h2>Tipe your seach query please</h2>';
+        refs.gallery.innerHTML = noQuery();
     } else {
         markupFromCache(searchQuery, queryes);
     };
