@@ -32,7 +32,7 @@ function  getBySearchQuery(searchQuery) {
 };
 
 function onSearchInput(e) {
-    searchQuery = e.target.value;    
+    searchQuery = e.target.value.toLowerCase();    
 
     if (searchQuery === '' || searchQuery.length < 3) {
         refs.gallery.innerHTML = noQuery();
